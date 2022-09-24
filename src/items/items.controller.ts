@@ -18,12 +18,22 @@ export class ItemsController {
   }
 
   @Get(':id')
-  findOne(@Param() param): string {
-    return `Item ${param.id}`;
+  findOne(@Param('id') id): string {
+    return `Item ${id}`;
   }
 
   @Post()
   create(@Body() createItemDto: CreateItemDto): string {
     return 'Create Item';
+  }
+
+  @Delete(':id')
+  delete(@Param('id') id): string {
+    return `Item ${id}`;
+  }
+
+  @Put(':id')
+  update(@Body() updateItemDto: CreateItemDto, @Param('id') id): string {
+    return `Update ${id} - Name: ${updateItemDto.name}`;
   }
 }
