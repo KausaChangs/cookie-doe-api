@@ -17,4 +17,8 @@ export class ItemsService {
       qty: 70,
     },
   ];
+
+  findAll(): Item[] {
+    return this.items;
+  }
 }

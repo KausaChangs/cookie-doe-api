@@ -9,12 +9,16 @@ import {
 } from '@nestjs/common';
 import { get } from 'http';
 import { CreateItemDto } from './dto/create-item.dto';
+import { ItemsService } from './items.service';
+import { Item } from './interfaces/items.interface';
 
 @Controller('items')
 export class ItemsController {
+  constructor(private readonly itemsService: ItemsService) {}
+
   @Get()
-  findAll(): string {
-    return ' Get all items';
+  findAll(): Item[] {
+    return this.itemsService.findAll();
   }
 
   @Get(':id')
